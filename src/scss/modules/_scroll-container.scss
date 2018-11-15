@@ -1,72 +1,3 @@
-.page-window {
-  width: 100vw;
-  height: 100vh;
-  background-color: transparent;
-  position: relative;
-  .-hero {
-
-  }
-}
-
-.m-hero-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  &:before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: URL("../dist/static/img/hero-banner-01.png");
-    background-position: center center;
-    background-size: cover;
-    transition: background 0.5s ease-in;
-  }
-
-  &:after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    display: block;
-    background-color: transparent;
-    transition: background 0.5s ease-in;
-    top: 0;
-    //background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  /*  &.-second {
-      &:before {
-        background-image: url("/static/img/hero-banner-02.png");
-        transition: background 0.5s ease-in;
-      }
-    }*/
-
-}
-
-.page-window__content {
-  position: absolute;
-  top: 0;
-  max-height: 100vh;
-  width: 100%;
-  overflow-y: auto;
-  padding-right: 17px;
-  box-sizing: content-box;
-}
-
-.m-scroll-content__item {
-  max-width: 570px;
-  margin: 0 auto;
-  position: sticky;
-  color: $white;
-  @include mq($m) {
-    padding: 50vh 0;
-
-  }
-}
-
 /*Scroll viewport container*/
 
 .m-page-container {
@@ -95,8 +26,8 @@
     top: 0;
   }
   &.-darken {
-    &:after{
-      background-color: rgba(0, 0, 0, 0.5);
+    &:after {
+      background-color: rgba(0, 0, 0, 0.75);
     }
   }
 
@@ -109,9 +40,18 @@
       transition: background 0.5s ease-in;
     }
   }
+  &.-white {
+    &:before {
+      background: $white;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: background 0.5s ease-in;
+    }
+  }
 }
 
-.page-scroll-container{
+.page-scroll-container {
   position: absolute;
   top: 0;
   right: 0;
@@ -128,7 +68,113 @@
 }
 
 .scroll-window-content {
-  background-color: red;
-  max-width: 570px;
+  max-width: 650px;
   margin: 0 auto;
+  color: $white;
+  background-color: transparent;
+  text-align: center;
+
+  &.-wide {
+    max-width: 1160px;
+  }
+}
+
+.scroll-window__company {
+  font-family: $font-mont;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.scroll-window__title {
+  font-family: $font-times;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  @include mq($m) {
+    font-size: 70px;
+  }
+}
+
+.scroll-window__subheading {
+  font-family: $font-mont;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.scroll-window__para {
+  font-family: $font-mont;
+  font-size: 20px;
+  text-align: left;
+  font-weight: 500;
+  &:first-letter {
+    font-size: 70px;
+    color: #a29484;
+    font-family: $font-times;
+    font-weight: bold;
+    line-height: 0.5;
+    padding-right: 2px;
+  }
+}
+
+.scroll-window__quote {
+
+}
+
+.scroll-window__quote-content {
+font-family: $font-times;
+  font-size: 35px;
+  position: relative;
+  &:before{
+    content: '';
+    display: block;
+    width: 60px;
+    height: 40px;
+    background-color: red;
+    position: absolute;
+    left: -75px;
+    top: 0;
+  }
+  &:after{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 40px;
+    background-color: red;
+    right: -20px;
+    bottom: 0;
+
+  }
+}
+
+.scroll-window__quote-author {
+}
+
+.scroll-window__wrapper {
+  display: flex;
+}
+
+.scroll-window__content-img{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 560px;
+  @include mq($m) {
+    max-width: 43%;
+    flex-basis: 43%;
+    padding-right: 100px;
+  }
+  span {
+    font-family: $font-mont;
+    font-weight: 200;
+    color: #808285;
+  }
+}
+
+.scroll-window__imgs{
+  @include mq($m) {
+    max-width: 57%;
+    flex-basis: 57%;
+  }
 }
