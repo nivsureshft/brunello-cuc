@@ -12,6 +12,9 @@ const textThreeWatcher = scrollMonitor.create(textThree)
 const textFour = document.querySelector('.scroll-window.-four .scroll-window-content')
 const textFourWatcher = scrollMonitor.create(textFour)
 
+const textFive = document.querySelector('.scroll-window.-five .scroll-window-content')
+const textFiveWatcher = scrollMonitor.create(textFive)
+
 textOneWatcher.enterViewport(function() {
   console.log('I have entered the viewport')
 })
@@ -56,4 +59,17 @@ textFourWatcher.exitViewport(function() {
 
 textFourWatcher.fullyEnterViewport(function() {
   pageContainer.classList.add('-secondImg', '-darken')
+  pageContainer.classList.remove('-white')
+})
+
+textFiveWatcher.enterViewport(function() {
+  console.log('I have entered the viewport2')
+})
+textFiveWatcher.exitViewport(function() {
+  pageContainer.classList.remove('-secondImg', '-darken')
+})
+
+textFiveWatcher.fullyEnterViewport(function() {
+  pageContainer.classList.add('-white')
+  pageContainer.classList.remove('-darken')
 })
