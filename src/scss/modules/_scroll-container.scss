@@ -196,13 +196,12 @@
   }
   span {
     font-family: $font-mont;
-    font-weight: 200;
+    font-weight: 400;
     color: #808285;
     display: flex;
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    font-weight: bold;
     @include mq($m) {
       max-width: 50%;
       flex-basis: 50%;
