@@ -40,9 +40,19 @@
       transition: background 0.5s ease-in;
     }
   }
+
+  &.-thirdImg {
+    &:before {
+      background: URL("../dist/static/img/hero-banner-03.png");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: background 0.5s ease-in;
+    }
+  }
   &.-white {
     &:before {
-      background: $white;
+      background: URL("../dist/static/img/hero-banner-blank.png");
       background-position: center center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -121,10 +131,10 @@
 }
 
 .scroll-window__quote-content {
-font-family: $font-times;
+  font-family: $font-times;
   font-size: 35px;
   position: relative;
-  &:before{
+  &:before {
     content: '';
     display: block;
     width: 60px;
@@ -134,7 +144,7 @@ font-family: $font-times;
     left: -75px;
     top: 0;
   }
-  &:after{
+  &:after {
     content: '';
     position: absolute;
     display: block;
@@ -154,7 +164,7 @@ font-family: $font-times;
   display: flex;
 }
 
-.scroll-window__content-img{
+.scroll-window__content-img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -172,9 +182,37 @@ font-family: $font-times;
   }
 }
 
-.scroll-window__imgs{
+.scroll-window__imgs {
   @include mq($m) {
     max-width: 57%;
     flex-basis: 57%;
+  }
+}
+
+.scroll-window__split-content {
+  display: flex;
+  @include mq($m) {
+
+  }
+  span {
+    font-family: $font-mont;
+    font-weight: 200;
+    color: #808285;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    font-weight: bold;
+    @include mq($m) {
+      max-width: 50%;
+      flex-basis: 50%;
+      padding: 70px;
+    }
+    img {
+      @include mq($m) {
+        max-width: 50%;
+        flex-basis: 50%;
+      }
+    }
   }
 }
