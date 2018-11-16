@@ -46,6 +46,7 @@
     "d3": "^5.7.0",
     "enquire.js": "^2.1.6",
     "intersection-observer": "^0.5.1",
+    "lodash": "^4.17.11",
     "scroll-snap": "^1.0.6",
     "scrollama": "^1.4.4",
     "scrollmonitor": "^1.2.4",
