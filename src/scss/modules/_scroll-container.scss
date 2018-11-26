@@ -1,63 +1,103 @@
 /*Scroll viewport container*/
 
+.m-background-container {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+
+  img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    object-fit: cover;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+  }
+}
+
+.m-mobile-wrapper {
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: URL("../dist/static/img/hero-banner-01-mob.png");
+
+  .-secondImg & {
+    background: URL("../dist/static/img/hero-banner-02-mob.png");
+  }
+  .-white & {
+    background: URL("../dist/static/img/hero-banner-blank.png");
+  }
+
+  @include mq($m) {
+    display: none;
+  }
+}
+
 .m-page-container {
   height: 100vh;
   width: 100vw;
-  &:before {
-    content: '';
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: URL("../dist/static/img/hero-banner-01.png");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition: background 0.5s ease-in;
-  }
+}
+
+&:after {
+  content: '';
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  display: block;
+  background-color: transparent;
+  transition: background 0.5s ease-in;
+  top: 0;
+}
+
+&.-darken {
   &:after {
-    content: '';
-    width: 100%;
-    position: fixed;
-    height: 100%;
-    display: block;
-    background-color: transparent;
-    transition: background 0.5s ease-in;
-    top: 0;
+    background-color: rgba(0, 0, 0, 0.75);
   }
-  &.-darken {
-    &:after {
-      background-color: rgba(0, 0, 0, 0.75);
-    }
-  }
+}
 
-  &.-secondImg {
-    &:before {
-      background: URL("../dist/static/img/hero-banner-02.png");
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      transition: background 0.5s ease-in;
-    }
-  }
+.scroll-window__btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+}
 
-  &.-thirdImg {
-    &:before {
-      background: URL("../dist/static/img/hero-banner-03.png");
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      transition: background 0.5s ease-in;
-    }
+.scroll-window__btn-arrow {
+  position: absolute;
+  width: 25px;
+  height: 15px;
+  background-color: red;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 65%);
+  background: URL("../dist/static/img/arrow.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translate(50%, 60%);
   }
-  &.-white {
-    &:before {
-      background: URL("../dist/static/img/hero-banner-blank.png");
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      transition: background 0.5s ease-in;
-    }
+  40% {
+    transform: translate(50%, 130%);
+  }
+  60% {
+    transform: translate(50%, 90%);
   }
 }
 
@@ -72,13 +112,11 @@
 }
 
 .scroll-window {
-  @include mq($m) {
-    padding: 50vh 0;
-  }
+  padding: 50vh 0;
 }
 
 .scroll-window-content {
-  max-width: 650px;
+  max-width: 750px;
   margin: 0 auto;
   color: $white;
   background-color: transparent;
@@ -87,28 +125,44 @@
   &.-wide {
     max-width: 1160px;
   }
+
+  @include mq($xxxxl) {
+    max-width: 1000px;
+  }
 }
 
 .scroll-window__company {
   font-family: $font-mont;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   text-transform: uppercase;
+
+  @include mq($xxxxl) {
+    font-size: 30px;
+  }
 }
 
 .scroll-window__title {
   font-family: $font-times;
   line-height: 1.1;
+  font-weight: bold;
   margin-bottom: 20px;
   @include mq($m) {
-    font-size: 70px;
+    font-size: 79.5px;
+  }
+  @include mq($xxxxl) {
+    font-size: 100px;
   }
 }
 
 .scroll-window__subheading {
   font-family: $font-mont;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 400;
+  max-width: 650px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 40px;
 }
 
 .scroll-window__para {
@@ -137,31 +191,46 @@
   &:before {
     content: '';
     display: block;
+    margin: 0 auto;
+    margin-bottom: 50px;
     width: 60px;
     height: 40px;
-    background-color: red;
-    position: absolute;
-    left: -75px;
+    background: URL("../dist/static/img/open-quote.png");
     top: 0;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
   }
   &:after {
     content: '';
-    position: absolute;
     display: block;
+    margin: 0 auto;
+    margin-top: 50px;
     width: 60px;
     height: 40px;
-    background-color: red;
-    right: -20px;
+    background: URL("../dist/static/img/close-quote.png");
     bottom: 0;
-
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }
 
 .scroll-window__quote-author {
+  font-family: $font-mont;
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 50px;
 }
 
 .scroll-window__wrapper {
   display: flex;
+  .-eight & {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .scroll-window__content-img {
@@ -177,7 +246,7 @@
   }
   span {
     font-family: $font-mont;
-    font-weight: 200;
+    font-weight: 500;
     color: #808285;
   }
 }
@@ -196,7 +265,7 @@
   }
   span {
     font-family: $font-mont;
-    font-weight: 400;
+    font-weight: 500;
     color: #808285;
     display: flex;
     justify-content: center;
@@ -214,4 +283,36 @@
       }
     }
   }
+}
+
+.scroll-window-final__title {
+  font-weight: bold;
+  font-size: 30px;
+  font-family: $font-mont;
+  text-transform: uppercase;
+}
+
+.scroll-window-final__content {
+  font-size: 25px;
+  font-weight: 200;
+  font-family: $font-mont;
+}
+
+.scroll-window-final__cta {
+  text-transform: uppercase;
+  border: 2px solid $white;
+  padding: 15px 30px;
+  font-family: $font-mont;
+  font-size: 22px;
+  color: $white;
+  font-weight: 700;
+
+}
+
+header {
+  display: none !important;
+}
+
+footer {
+  display: none !important;
 }

@@ -1,13 +1,14 @@
 import scrollMonitor from 'scrollmonitor'
 import _ from 'lodash'
 
+let textOne = document.querySelector('.scroll-window.-one .scroll-window-content')
+
 window.onbeforeunload = function () {
   window.scrollTo(0, 0)
-  alert()
+  textOne.scrollIntoView({behavior: 'instant', block: 'center', inline: 'nearest'})
 }
 
 const pageContainer = document.querySelector('.m-page-container')
-const textOne = document.querySelector('.scroll-window.-one .scroll-window-content')
 const textOneWatcher = scrollMonitor.create(textOne)
 
 const textTwo = document.querySelector('.scroll-window.-two .scroll-window-content')
@@ -27,6 +28,16 @@ const textSixWatcher = scrollMonitor.create(textSix)
 
 const textSeven = document.querySelector('.scroll-window.-seven .scroll-window-content')
 const textSevenWatcher = scrollMonitor.create(textSeven)
+
+const textEight = document.querySelector('.scroll-window.-eight .scroll-window-content')
+const textEightWatcher = scrollMonitor.create(textEight)
+
+/* Banner scroll button  */
+const heroBannerScroll = document.querySelector('.scroll-window__btn')
+heroBannerScroll.addEventListener('click', (e) => {
+  e.preventDefault()
+  textTwo.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'nearest'})
+})
 
 let scrollPos = 0
 let isScrollDown = false
@@ -63,23 +74,26 @@ textTwoWatcher.enterViewport(function () {
 })
 textTwoWatcher.exitViewport(function () {
   pageContainer.classList.remove('-darken')
+
+  if (isScrollDown) {
+    pageContainer.classList.add('-white')
+  }
 })
 
 textTwoWatcher.fullyEnterViewport(function () {
   pageContainer.classList.add('-darken')
   pageContainer.classList.remove('-secondImg')
-  console.log(isScrollDown)
 })
 
 /* TextThree */
 textThreeWatcher.enterViewport(function () {
-  pageContainer.classList.remove('-darken')
+  pageContainer.classList.remove('-darken', '-white')
 })
 textThreeWatcher.exitViewport(function () {
 })
 
 textThreeWatcher.fullyEnterViewport(function () {
-  pageContainer.classList.add('-secondImg')
+  pageContainer.classList.add('-white')
   pageContainer.classList.remove('-darken')
 })
 
@@ -104,6 +118,10 @@ textFiveWatcher.enterViewport(function () {
   console.log('I have entered the viewport2')
 })
 textFiveWatcher.exitViewport(function () {
+  if (!isScrollDown) {
+    pageContainer.classList.remove('-white')
+    pageContainer.classList.add('-secondImg')
+  }
 })
 
 textFiveWatcher.fullyEnterViewport(function () {
@@ -128,12 +146,26 @@ textSixWatcher.fullyEnterViewport(function () {
   pageContainer.classList.add('-thirdImg')
 })
 
-/* TextSix */
+/* TextSeven */
 textSevenWatcher.enterViewport(function () {
 })
 textSevenWatcher.exitViewport(function () {
 
 })
 textSevenWatcher.fullyEnterViewport(function () {
+  pageContainer.classList.remove('-final', '-darken')
+})
 
+/* TextEight */
+textEightWatcher.enterViewport(function () {
+
+})
+
+textEightWatcher.exitViewport(function () {
+  if (!isScrollDown) {
+    pageContainer.classList.remove('-final', '-darken')
+  }
+})
+textEightWatcher.fullyEnterViewport(function () {
+  pageContainer.classList.add('-final', '-darken')
 })
