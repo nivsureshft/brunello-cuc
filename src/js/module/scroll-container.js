@@ -32,6 +32,13 @@ const textSevenWatcher = scrollMonitor.create(textSeven)
 const textEight = document.querySelector('.scroll-window.-eight .scroll-window-content')
 const textEightWatcher = scrollMonitor.create(textEight)
 
+const img1 = document.querySelector('.m-background-img-01')
+const img2 = document.querySelector('.m-background-img-02')
+const img3 = document.querySelector('.m-background-img-03')
+const img4 = document.querySelector('.m-background-img-04')
+const img5 = document.querySelector('.m-background-img-05')
+const img6 = document.querySelector('.m-background-img-06')
+
 /* Banner scroll button  */
 const heroBannerScroll = document.querySelector('.scroll-window__btn')
 heroBannerScroll.addEventListener('click', (e) => {
@@ -61,11 +68,16 @@ textOneWatcher.enterViewport(function () {
 })
 
 textOneWatcher.exitViewport(function () {
-  console.log('I have left the viewport')
+  if (isScrollDown) {
+    pageContainer.classList.add('-darken')
+  }
 })
 
 textOneWatcher.fullyEnterViewport(function () {
-  console.log('fully')
+  if (!isScrollDown) {
+    pageContainer.classList.remove('-darken')
+  }
+  img1.classList.add('-show')
 })
 
 /* TextTwo */
@@ -73,28 +85,36 @@ textTwoWatcher.enterViewport(function () {
   console.log('I have entered the viewport2')
 })
 textTwoWatcher.exitViewport(function () {
-  pageContainer.classList.remove('-darken')
-
   if (isScrollDown) {
-    pageContainer.classList.add('-white')
+    img1.classList.remove('-show')
+    img2.classList.add('-show')
   }
+
+  pageContainer.classList.remove('-darken')
 })
 
 textTwoWatcher.fullyEnterViewport(function () {
-  pageContainer.classList.add('-darken')
-  pageContainer.classList.remove('-secondImg')
+  if (isScrollDown) {
+    pageContainer.classList.add('-darken')
+  } else {
+    pageContainer.classList.remove('-darken')
+  }
 })
 
 /* TextThree */
 textThreeWatcher.enterViewport(function () {
-  pageContainer.classList.remove('-darken', '-white')
+  /*  pageContainer.classList.remove('-darken', '-white')*/
 })
 textThreeWatcher.exitViewport(function () {
+  if (isScrollDown) {
+    img2.classList.remove('-show')
+    img3.classList.add('-show')
+  }
 })
 
 textThreeWatcher.fullyEnterViewport(function () {
-  pageContainer.classList.add('-white')
-  pageContainer.classList.remove('-darken')
+  img2.classList.add('-show')
+  img1.classList.remove('-show')
 })
 
 /* TextFour */
@@ -103,14 +123,14 @@ textFourWatcher.enterViewport(function () {
 })
 textFourWatcher.exitViewport(function () {
   if (isScrollDown) {
-    pageContainer.classList.remove('-secondImg', '-darken')
-    pageContainer.classList.add('-white')
+    img4.classList.add('-show')
+    img3.classList.remove('-show')
   }
 })
 
 textFourWatcher.fullyEnterViewport(function () {
-  pageContainer.classList.add('-darken')
-  pageContainer.classList.remove('-white')
+  /*  pageContainer.classList.add('-darken')
+    pageContainer.classList.remove('-white')*/
 })
 
 /* TextFive */
@@ -118,32 +138,29 @@ textFiveWatcher.enterViewport(function () {
   console.log('I have entered the viewport2')
 })
 textFiveWatcher.exitViewport(function () {
-  if (!isScrollDown) {
-    pageContainer.classList.remove('-white')
-    pageContainer.classList.add('-secondImg')
+  if (isScrollDown) {
+    img2.classList.add('-show')
+    img4.classList.remove('-show')
   }
 })
 
 textFiveWatcher.fullyEnterViewport(function () {
-  pageContainer.classList.add('-white')
-  pageContainer.classList.remove('-darken')
+  /*  pageContainer.classList.add('-white')
+    pageContainer.classList.remove('-darken')*/
 })
 
 /* TextSix */
 textSixWatcher.enterViewport(function () {
 })
 textSixWatcher.exitViewport(function () {
-  if (!isScrollDown) {
-    pageContainer.classList.remove('-thirdImg')
-    pageContainer.classList.add('-white')
-  } else {
-    pageContainer.classList.remove('-thirdImg')
-    pageContainer.classList.add('-white')
+  if (isScrollDown) {
+    img2.classList.remove('-show')
+    img5.classList.add('-show')
   }
 })
 textSixWatcher.fullyEnterViewport(function () {
-  pageContainer.classList.remove('-white')
-  pageContainer.classList.add('-thirdImg')
+  /*  pageContainer.classList.remove('-white')
+    pageContainer.classList.add('-thirdImg')*/
 })
 
 /* TextSeven */
@@ -153,7 +170,9 @@ textSevenWatcher.exitViewport(function () {
 
 })
 textSevenWatcher.fullyEnterViewport(function () {
-  pageContainer.classList.remove('-final', '-darken')
+  /*
+    pageContainer.classList.remove('-final', '-darken')
+  */
 })
 
 /* TextEight */
@@ -162,10 +181,12 @@ textEightWatcher.enterViewport(function () {
 })
 
 textEightWatcher.exitViewport(function () {
-  if (!isScrollDown) {
-    pageContainer.classList.remove('-final', '-darken')
-  }
+  /*  if (!isScrollDown) {
+      pageContainer.classList.remove('-final', '-darken')
+    }*/
 })
 textEightWatcher.fullyEnterViewport(function () {
-  pageContainer.classList.add('-final', '-darken')
+  /*
+    pageContainer.classList.add('-final', '-darken')
+  */
 })
