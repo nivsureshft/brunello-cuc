@@ -1,0 +1,79 @@
+.m-page-container {
+  &.-one {
+    .m-background-img-01-mob {
+      opacity: 1;
+      @include mq($l) {
+        opacity: 0;
+      }
+    }
+    .m-background-img-01 {
+      @include mq($l) {
+        opacity: 1;
+      }
+    }
+  }
+  &.-two {
+    .m-background-img-02 {
+      opacity: 1;
+    }
+  }
+  &.-three {
+    .m-background-img-03-mob {
+      opacity: 1;
+      @include mq($l) {
+        opacity: 0;
+      }
+    }
+    .m-background-img-03 {
+      @include mq($l) {
+        opacity: 1;
+      }
+    }
+  }
+  &.-four {
+    .m-background-img-04 {
+      opacity: 1;
+    }
+  }
+  &.-five {
+    .m-background-img-02 {
+      opacity: 1;
+    }
+  }
+  &.-six {
+    .m-background-img-05-mob {
+      opacity: 1;
+      @include mq($l) {
+        opacity: 0;
+      }
+    }
+    .m-background-img-05 {
+      @include mq($l) {
+        opacity: 1;
+      }
+    }
+  }
+  &.-seven {
+    .m-background-img-02 {
+      opacity: 1;
+    }
+  }
+  &.-eight {
+    .m-background-img-06 {
+      opacity: 1;
+    }
+  }
+  &.-nine {
+    .m-background-img-07-mob {
+      opacity: 1;
+      @include mq($l) {
+        opacity: 0;
+      }
+    }
+    .m-background-img-07 {
+      @include mq($l) {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,10 +1,16 @@
 /*Scroll viewport container*/
+#disclaimer {
+  display: none !important;
+}
 
 .m-background-container {
   height: 100vh;
   width: 100vw;
   position: fixed;
-
+  top: 78px;
+  @include mq($xm) {
+    top: 90px;
+  }
   img {
     width: 100%;
     position: absolute;
@@ -12,11 +18,11 @@
     object-fit: cover;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.5s ease-in;
+    transition: opacity 0.8s ease-in;
 
     &.-show {
       opacity: 1;
-      transition: opacity 0.5s ease-in;
+      transition: opacity 0.8s ease-in;
     }
   }
 }
@@ -61,34 +67,43 @@
 
   &.-darken {
     &:after {
-        background-color: rgba(0, 0, 0, 0.75);
-        transition: background-color 0.5s ease-in;
+      background-color: rgba(0, 0, 0, 0.75);
+      transition: background-color 0.5s ease-in;
     }
   }
 }
 
 .scroll-window__btn {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 100%;
   background-color: rgba(0, 0, 0, 0.35);
   margin: 0 auto;
   position: relative;
   cursor: pointer;
+
+  @include mq($l) {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .scroll-window__btn-arrow {
   position: absolute;
-  width: 25px;
-  height: 15px;
-  background-color: red;
+  width: 19px;
+  height: 23px;
   bottom: 50%;
   right: 50%;
   transform: translate(50%, 65%);
-  background: URL("../dist/static/img/arrow.png");
+  background: URL("../dist/static/img/down-chevron.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  @include mq($l) {
+    width: 25px;
+    height: 15px;
+  }
 }
 
 .bounce {
@@ -115,103 +130,263 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  margin-top: 65px;
+
+  @include mq($l) {
+    margin-top: initial;
+  }
 }
 
 .scroll-window {
-  padding: 50vh 0;
+  padding: 40vh 0;
+
+  @include mq($l) {
+    padding: 40vh 0;
+  }
+
+  &.-three {
+    .scroll-window-content {
+      max-width: 800px;
+      padding: 0 30px;
+      @include mq($l) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+    }
+
+  }
+  &.-ten {
+    .scroll-window-content {
+      padding: 0;
+    }
+  }
+  &.-five {
+    .scroll-window-content {
+      max-width: 800px;
+      padding: 0 30px;
+    }
+
+    font-family: $font-mont;
+    font-size: 20px;
+    font-weight: 300;
+    color: #414042;
+
+    @include mq($l) {
+      font-size: 20px;
+    }
+
+    span {
+      font-style: italic;
+    }
+  }
+
+  &.-six {
+    .scroll-window-content {
+      padding: 0;
+      @include mq($l) {
+        padding: initial;
+      }
+    }
+  }
+  &.-eight {
+    .scroll-window-content {
+      padding: 0;
+      @include mq($l) {
+        padding: initial;
+      }
+    }
+  }
+
+  &.-six {
+    .scroll-window-content {
+      flex-direction: column;
+      display: flex;
+      @include mq($m) {
+        flex-direction: row;
+      }
+
+      .window-one {
+        max-width: 100%;
+        flex-basis: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        font-family: $font-mont;
+        font-weight: 300;
+        color: black;
+        font-size: 20px;
+        @include mq($m) {
+          max-width: 40%;
+          flex-basis: 40%;
+          padding-right: 70px;
+          padding-left: 30px;
+          padding-top: 50px;
+        }
+      }
+      .window-two {
+        max-width: 100%;
+        flex-basis: 100%;
+        @include mq($m) {
+          max-width: 60%;
+          flex-basis: 60%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: flex-end;
+        }
+
+        .window-two__one {
+          margin-bottom: 30px;
+          padding-right: 100px;
+          @include mq($m) {
+          }
+        }
+        .window-two__two {
+
+        }
+      }
+    }
+  }
+  &.-ten {
+    padding-bottom: 0;
+    @include mq($l) {
+      padding-bottom: 20vh;
+    }
+  }
 }
 
 .scroll-window-content {
-  max-width: 750px;
+  max-width: 1220px !important;
   margin: 0 auto;
   color: $white;
   background-color: transparent;
   text-align: center;
+  padding: 0 30px;
 
   &.-wide {
     max-width: 1160px;
   }
-
   @include mq($xxxxl) {
     max-width: 1000px;
   }
 
   .-five & {
     text-align: left;
-    color: #414042;
+    color: black;
   }
 }
 
 .scroll-window__company {
   font-family: $font-mont;
-  font-size: 22px;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 4px;
 
-  @include mq($xxxxl) {
+  @include mq($l) {
     font-size: 30px;
   }
+
 }
 
 .scroll-window__title {
   font-family: $font-times;
   line-height: 1.1;
-  font-weight: bold;
+  font-weight: normal;
   margin-bottom: 20px;
-  @include mq($m) {
-    font-size: 79.5px;
-  }
-  @include mq($xxxxl) {
+  font-size: 50px;
+  @include mq($l) {
     font-size: 100px;
   }
 }
 
 .scroll-window__subheading {
   font-family: $font-mont;
-  font-size: 24px;
   font-weight: 400;
   max-width: 650px;
   text-align: center;
   margin: 0 auto;
   margin-bottom: 40px;
+  font-size: 16px;
+
+  @include mq($l) {
+    font-size: 24px;
+
+  }
 }
 
 .scroll-window__para {
   font-family: $font-mont;
   font-size: 20px;
   text-align: left;
-  font-weight: 500;
-  color: #414042;
-  &:first-letter {
-    font-size: 70px;
+  font-weight: 200;
+  color: black;
+  @include mq($l) {
+    font-size: 20px;
+    max-width: 700px;
+  }
+  .first-letter {
     color: #a29484;
-    font-family: $font-times;
-    font-weight: bold;
-    line-height: 0.5;
-    padding-right: 2px;
+    float: left;
+    font-family: $font-minion;
+
+    font-size: 90px;
+    line-height: 56px;
+    padding-top: 4px;
+    padding-right: 0px;
+    padding-left: 0;
+
+    @include mq($l) {
+      font-size: 135px;
+      line-height: 81px;
+      padding-top: 4px;
+      padding-right: 4px;
+      margin-left: -3px;
+    }
+  }
+  .-three & {
+    @include mq($l) {
+      margin-left: -8px;
+    }
   }
 }
 
 .scroll-window__quote {
-
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 .scroll-window__quote-content {
   font-family: $font-times;
-  font-size: 35px;
+  font-size: 30px;
   position: relative;
+
+  @include mq($l) {
+    font-size: 35px;
+  }
+
   &:before {
     content: '';
     display: block;
     margin: 0 auto;
     margin-bottom: 50px;
-    width: 60px;
-    height: 40px;
-    background: URL("../dist/static/img/open-quote.png");
+    width: 70px;
+    height: 50px;
+    background: URL("../dist/static/img/open-quote-mob.png");
     top: 0;
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
+
+    @include mq($l) {
+      width: 55px;
+      height: 40px;
+      background: URL("../dist/static/img/open-quote.png");
+    }
 
   }
   &:after {
@@ -219,13 +394,19 @@
     display: block;
     margin: 0 auto;
     margin-top: 50px;
-    width: 60px;
-    height: 40px;
-    background: URL("../dist/static/img/close-quote.png");
+    width: 70px;
+    height: 50px;
+    background: URL("../dist/static/img/close-quote-mob.png");
     bottom: 0;
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
+
+    @include mq($l) {
+      width: 55px;
+      height: 40px;
+      background: URL("../dist/static/img/close-quote.png");
+    }
   }
 }
 
@@ -234,6 +415,10 @@
   font-size: 20px;
   font-weight: 600;
   padding-top: 50px;
+
+  @include mq($l) {
+    font-size: 20px;
+  }
 }
 
 .scroll-window__wrapper {
@@ -321,10 +506,377 @@
 
 }
 
+.window-media {
+  display: flex;
+  flex-direction: column;
+
+  @include mq($l) {
+    flex-direction: row;
+  }
+
+  img {
+    max-width: 100%;
+    flex-basis: 100%;
+    object-fit: cover;
+    object-position: top;
+    order: 2;
+    @include mq($l) {
+      max-width: 50%;
+      flex-basis: 50%;
+      object-fit: contain;
+      object-position: center;
+      order: 1;
+      margin-left: -50px;
+    }
+  }
+}
+
+.window-media__content {
+  font-family: $font-mont;
+  font-weight: 300;
+  color: black;
+  font-size: 20px;
+  padding: 100px 50px;
+  text-align: left;
+  max-width: 100%;
+  flex-basis: 100%;
+  order: 1;
+  @include mq($l) {
+    max-width: 50%;
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    font-size: 20px;
+    order: 2;
+  }
+}
+
+.final-window {
+  display: flex;
+  flex-direction: column;
+  @include mq($l) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.final-window__one {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 100%;
+  flex-basis: 100%;
+  order: 2;
+  padding: 180px 0;
+
+  @include mq($l) {
+    max-width: 50%;
+    flex-basis: 50%;
+    order: 1;
+
+    img {
+      object-fit: contain;
+    }
+
+  }
+
+  span {
+    font-size: 35px;
+    font-family: $font-mont;
+    font-weight: 300;
+    padding: 45px 0;
+
+    @include mq($l) {
+      font-size: 50px;
+    }
+  }
+}
+
+.final-window__two-desktop {
+  display: none;
+  @include mq($l) {
+    display: block;
+  }
+}
+
+.final-window__two-mobile {
+  display: block;
+  @include mq($l) {
+    display: none;
+  }
+}
+
+.final-window__one-logo {
+}
+
+.final-window__cta {
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-family: $font-mont;
+  font-weight: bold;
+  color: $white;
+  border: 3px solid $white;
+  padding: 20px 30px;
+
+  @include mq($l) {
+    font-size: 20px;
+  }
+
+  &:hover, &:active, &:focus {
+    color: white;
+  }
+
+
+
+}
+
+.final-window__two {
+  max-width: 100%;
+  flex-basis: 100%;
+  order: 1;
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  @include mq($l) {
+    max-width: 50%;
+    flex-basis: 50%;
+    order: 2;
+    img {
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+
+}
+
 header {
-  display: none !important;
+  display: block !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 
 footer {
   display: none !important;
+}
+
+.inline-quote {
+  font-size: 20px;
+  margin-bottom: 60px;
+  text-align: center;
+  @include mq($l) {
+    margin-bottom: initial;
+    text-align: left;
+    font-size: 20px;
+
+  }
+  .desktop-author {
+    display: none;
+    @include mq($l) {
+      display: inline
+    }
+  }
+  .mobile-author {
+    display: block;
+    @include mq($l) {
+      display: none;
+    }
+  }
+}
+
+.window-six-desktop {
+  display: none;
+
+  @include mq($l) {
+    display: flex;
+    margin: -40px 0;
+  }
+}
+
+.window-six-mobile {
+  display: block;
+  font-family: $font-mont;
+  font-weight: 300;
+  color: #414042;
+
+  @include mq($l) {
+    display: none;
+  }
+}
+
+.window-six-mobile {
+  p {
+    font-size: 20px;
+    padding: 50px;
+  }
+
+}
+
+.window-six-mobile-img-one {
+  width: 100%;
+}
+
+.window-six-mobile-img-two {
+  width: 100%;
+  padding: 50px;
+}
+
+.window-six-mobile-img-three {
+  width: 100%;
+  padding: 50px;
+}
+
+.tooltip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: fixed;
+  top: 52px;
+  padding: 15px 50px;
+  width: 100%;
+  height: initial;
+  transition: height 0.5s ease-in, padding 0.1s ease-in;
+  z-index: 2;
+  border-bottom: 2px #30784a solid;
+
+  @include mq($xm) {
+    top: 89px;
+    padding: 30px 50px;
+
+  }
+
+  .tooltip-container {
+    display: flex;
+    align-items: center;
+    max-width: 1220px;
+    WIDTH: 100%;
+    MARGIN: 0 AUTO;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @include mq($l) {
+    padding: 30px 100px;
+    justify-content: flex-end;
+  }
+
+  .-scrolling & {
+    height: 0;
+    padding: 20px 100px;
+    transition: height 0.5s ease-in, padding 0.1s ease-in;
+  }
+}
+
+.tooltip-info {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5px;
+  position: relative;
+  cursor: pointer;
+  top: 0;
+
+  &.-hover {
+    span {
+      opacity: 1;
+
+    }
+  }
+
+  span {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+    position: absolute;
+    top: 0;
+    width: 250px;
+    right: 25px;
+    @include mq($l) {
+      width: 750px;
+      right: 30px;
+      top: initial;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      right: 5px;
+      top: 6px;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 5px solid black;
+    }
+
+  }
+}
+
+.tooltip-bs {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  white-space: pre;
+  font-size: 14px;
+
+  @include mq($l) {
+    font-size: initial;
+  }
+  .-scrolling & {
+    font-size: 10px;
+  }
+}
+
+.tooltip-icon {
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    max-width: 250px;
+    padding-left: 8px;
+
+    .-scrolling & {
+      max-width: 200px;
+    }
+  }
+}
+
+.cuci-footer {
+  position: relative;
+}
+
+.footer-navigate-top {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  position: absolute;
+  background: URL("../dist/static/img/btn_arrow_back2.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  right: 30px;
+  top: -30px;
+  cursor: pointer;
+}
+
+.quote-container {
+  @include mq($l) {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.scroll-window-content.-wide.-final {
+  @include mq($l) {
+    max-width: initial !important;
+  }
 }
