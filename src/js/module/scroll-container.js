@@ -5,8 +5,8 @@ import {isDesktop} from 'util/breakpoints'
 let textOne = document.querySelector('.scroll-window.-one .scroll-window-content')
 
 window.onbeforeunload = function () {
-/*  window.scrollTo(0, 0)
-  textOne.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'nearest'})*/
+  window.scrollTo(0, 0)
+  textOne.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'nearest'})
 }
 
 let scrollPos = 0
